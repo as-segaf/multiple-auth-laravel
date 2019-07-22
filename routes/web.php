@@ -28,7 +28,7 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 Route::post('/register/writer', 'Auth\RegisterController@createWriter');
 
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin');
-Route::view('/writer', 'writer');
+Route::view('/admin', 'admin')->middleware('auth:admin');
+Route::view('/writer', 'writer')->middleware('auth:writer');
 
 // Route::get('/home', 'HomeController@index')->name('home');

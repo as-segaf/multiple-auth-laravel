@@ -91,7 +91,11 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        Writer::create($request->all());
+        $writer = Writer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
         return redirect()->intended('login/writer');
     }
 
